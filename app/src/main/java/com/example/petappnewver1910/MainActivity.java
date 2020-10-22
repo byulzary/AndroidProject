@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userSettingsButton = findViewById(R.id.userSettingsButton);
         logoutButton = findViewById(R.id.logoutButton);
         friendsButton = findViewById(R.id.buttonFindFriends);
-        myPetsButton=findViewById(R.id.myPetsButton);
+        myPetsButton = findViewById(R.id.myPetsButton);
         myPetsButton.setOnClickListener(this);
         friendsButton.setOnClickListener(this);
         addPetButton.setOnClickListener(this);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void myPetsButton() {
-        //startActivity(new Intent(this, MyPetsActivity.class));
+        startActivity(new Intent(this, MyPetsActivity.class));
     }
 
     private void findFriends() {

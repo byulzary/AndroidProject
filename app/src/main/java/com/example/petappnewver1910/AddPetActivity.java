@@ -22,15 +22,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.CollationElementIterator;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddPetActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,9 +42,9 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
     ImageView addPetImage;
     TextView mDisplaydate;
     DatePickerDialog.OnDateSetListener mDateSetListener;
-    FirebaseAuth mAuth;
     DatabaseReference database;
     int numOfPets;
+    Date bDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +86,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
                 Log.d(TAG, "onDateSet:date "+year+"/"+month+"/"+dayOfMonth);
                 String date=month+"/"+dayOfMonth+"/"+year;
                 mDisplaydate.setText(date);
+                bDay = new Date(year, month, dayOfMonth);
             }
         };
     }
@@ -94,7 +94,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         String name = editPetName.getText().toString().trim();
-        int age = Integer.parseInt(editAge.getText().toString().trim());
+//        int age = Integer.parseInt(editAge.getText().toString().trim());
         int checkedRadioButtonId = radioGroupSex.getCheckedRadioButtonId();
         radioButtonSex = findViewById(checkedRadioButtonId);
 
@@ -102,15 +102,14 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
             editPetName.setError("Name cannot be empty");
             editPetName.requestFocus();
         }
-        if (age <= 0) {
-            editAge.setError("Age cannot be empty or less than 0");
-            editAge.requestFocus();
-        }
+//        if (age <= 0) {
+//            editAge.setError("Age cannot be empty or less than 0");
+//            editAge.requestFocus();
+//        }
         String sex="Male";
         if (radioButtonFemale.isChecked()){
             sex="Female";
         }
-
 
         String date=mDisplaydate.getText().toString().trim();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -132,10 +131,8 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
         database.addValueEventListener(postListener);
         numOfPets++;
         database.child("numOfPets").setValue(numOfPets);
-        Pet pet = new Pet(name, age, sex, date);
 
-
-
+        Pet pet = new Pet(name, sex, bDay);
 
         FirebaseDatabase.getInstance()
                 .getReference("Users")
