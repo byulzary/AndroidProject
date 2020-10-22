@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
@@ -40,7 +42,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         editTextPassword = findViewById(R.id.editPassword);
         editTextEmail = findViewById(R.id.editEmail);
         editTextFullName = findViewById(R.id.editName);
-
 
     }
 
@@ -91,6 +92,14 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         onUserRegistered(fullName, email);
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(fullName)
+                                .build();
+
+                        user.updateProfile(profileUpdates);
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

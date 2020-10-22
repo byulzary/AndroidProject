@@ -35,6 +35,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         register = (TextView) findViewById(R.id.textRegister);
         register.setOnClickListener(this);
         loginButton.setOnClickListener(this);
+        checkLoggedIn();
+    }
+
+    private void checkLoggedIn() {
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        if (user!=null){
+            startActivity(new Intent(this, MainActivity.class));
+        }
     }
 
     @Override
