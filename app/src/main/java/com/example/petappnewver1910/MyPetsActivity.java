@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,12 +31,14 @@ import java.util.ArrayList;
 public class MyPetsActivity extends AppCompatActivity {
 
     private static String TAG = MyPetsActivity.class.getSimpleName();
+    Button editPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_pets);
         RecyclerView rv = findViewById(R.id.recyclerPets);
+
         rv.setLayoutManager(new GridLayoutManager(this, 1));
         ArrayList<Pet> pets = new ArrayList<>();
 
@@ -52,12 +55,13 @@ public class MyPetsActivity extends AppCompatActivity {
         };
 
         ListAdapter<Pet, PetAdapter.PetViewHolder> listAdapter = new ListAdapter<Pet, PetAdapter.PetViewHolder>(itemCallback) {
+
             @NonNull
             @Override
             public PetAdapter.PetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 LayoutInflater inflater = LayoutInflater.from(MyPetsActivity.this);
                 View petCard = inflater.inflate(R.layout.pet_card, parent, false);
-                return new PetAdapter.PetViewHolder(petCard);
+                return new PetAdapter.PetViewHolder(petCard, MyPetsActivity.this);
             }
 
             @Override
@@ -66,7 +70,6 @@ public class MyPetsActivity extends AppCompatActivity {
             }
         };
         rv.setAdapter(listAdapter);
-
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userID).child("pets");
         ValueEventListener postListener = new ValueEventListener() {

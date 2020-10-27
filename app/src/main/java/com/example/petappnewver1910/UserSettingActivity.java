@@ -58,6 +58,7 @@ public class UserSettingActivity extends AppCompatActivity {
                 User newUser = dataSnapshot.getValue(User.class);
                 textEmail.setText(newUser.getEmail());
                 textFullName.setText(newUser.getFullName());
+                newUser.setNumOfPets(newUser.getNumOfPets()+1);
                 textNumOfPets.setText(String.valueOf(newUser.getNumOfPets()));
                 textNumOfFriends.setText(String.valueOf((newUser.getNumOfFriends())));
 

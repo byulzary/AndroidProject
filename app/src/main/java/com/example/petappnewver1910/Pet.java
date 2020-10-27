@@ -27,6 +27,10 @@ public class Pet {
         this.name = name;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public long getbDay() {
         return bDay;
     }

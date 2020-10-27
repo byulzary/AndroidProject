@@ -37,7 +37,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
 
     RadioGroup radioGroupSex; //;)
     RadioButton radioButtonSex, radioButtonMale, radioButtonFemale;
-    EditText editPetName, editAge;
+    EditText editPetName;
     Button addPetButton;
     ImageView addPetImage;
     TextView mDisplaydate;
@@ -57,11 +57,11 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
         radioButtonMale.setChecked(true);
         radioButtonFemale.setChecked(false);
         addPetButton = findViewById(R.id.addPetButton);
-        editAge = findViewById(R.id.editAge);
         editPetName = findViewById(R.id.editPetName);
         addPetButton.setOnClickListener(this);
         addPetImage = findViewById(R.id.addPetImageButton);
         mDisplaydate = (TextView) findViewById(R.id.dateView);
+
         mDisplaydate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,10 +102,6 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
             editPetName.setError("Name cannot be empty");
             editPetName.requestFocus();
         }
-//        if (age <= 0) {
-//            editAge.setError("Age cannot be empty or less than 0");
-//            editAge.requestFocus();
-//        }
         String sex="Male";
         if (radioButtonFemale.isChecked()){
             sex="Female";

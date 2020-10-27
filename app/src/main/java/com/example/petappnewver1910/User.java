@@ -2,6 +2,16 @@ package com.example.petappnewver1910;
 
 public class User {
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
+
     public String getFullName() {
         return fullName;
     }
@@ -36,6 +46,7 @@ public class User {
 
     public String fullName, email;
     public int numOfPets, numOfFriends;
+    public String id;
 
     public User(){
 

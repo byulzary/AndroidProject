@@ -29,16 +29,6 @@
         app:layout_constraintStart_toEndOf="@+id/petImageView"
         app:layout_constraintTop_toBottomOf="@+id/petNameView" />
 
-    <Button
-        android:id="@+id/editPetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:text="EDIT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/petNameView"
         android:layout_width="100dp"
@@ -52,8 +42,18 @@
         android:id="@+id/petSexView"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toStartOf="@+id/editPetButton"
-        app:layout_constraintStart_toEndOf="@+id/petImageView"
+        app:layout_constraintStart_toStartOf="@+id/petDateOfBirthView"
         app:layout_constraintTop_toBottomOf="@+id/petDateOfBirthView" />
+
+    <Button
+        android:id="@+id/editListPet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UPDATE"
+        app:layout_constraintBottom_toBottomOf="@+id/petImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/petDateOfBirthView"
+        app:layout_constraintTop_toTopOf="@+id/petImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

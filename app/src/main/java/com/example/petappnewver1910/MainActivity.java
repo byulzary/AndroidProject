@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton addPetButton, userSettingsButton;
-    Button logoutButton, friendsButton, myPetsButton;
+    Button logoutButton, friendsButton, myPetsButton, findUserButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         logoutButton = findViewById(R.id.logoutButton);
         friendsButton = findViewById(R.id.buttonFindFriends);
         myPetsButton = findViewById(R.id.myPetsButton);
+        findUserButton=findViewById(R.id.findEmailButton);
+        findUserButton.setOnClickListener(this);
         myPetsButton.setOnClickListener(this);
         friendsButton.setOnClickListener(this);
         addPetButton.setOnClickListener(this);
@@ -45,20 +47,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 userSetting();
                 break;
             case R.id.buttonFindFriends:
-                findFriends();
+                MyFriends();
                 break;
             case R.id.myPetsButton:
                 myPetsButton();
                 break;
+            case R.id.findEmailButton:
+                findUsers();
+                break;
         }
+    }
+
+    private void MyFriends() {
+        startActivity(new Intent(this, MyFriendsActivity.class));
     }
 
     private void myPetsButton() {
         startActivity(new Intent(this, MyPetsActivity.class));
     }
 
+    private void findUsers(){
+        startActivity(new Intent(this, FindUsersActivity.class));
+    }
+
     private void findFriends() {
-        startActivity(new Intent(this, FriendsActivity.class));
+       // startActivity(new Intent(this, FindUsersActivity.class));
     }
 
     private void userSetting() {
