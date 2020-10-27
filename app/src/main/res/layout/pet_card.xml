@@ -24,6 +24,8 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editPetButton"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/petImageView"
@@ -35,6 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="50dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/petImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,10 +46,13 @@
         android:id="@+id/petSexView"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="25dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editPetButton"
         app:layout_constraintStart_toStartOf="@+id/petDateOfBirthView"
-        app:layout_constraintTop_toBottomOf="@+id/petDateOfBirthView" />
+        app:layout_constraintTop_toBottomOf="@+id/petDateOfBirthView"
+        tools:ignore="UnknownId" />
 
     <Button
         android:id="@+id/editListPet"

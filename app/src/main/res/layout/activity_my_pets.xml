@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:id="@+id/recyclerPets"
     tools:context=".MyPetsActivity"
+    android:background="#557BC6"
+
     tools:itemCount="8"
     tools:listitem="@layout/pet_card">
 

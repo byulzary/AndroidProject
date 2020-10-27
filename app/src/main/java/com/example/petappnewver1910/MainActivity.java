@@ -12,25 +12,39 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton addPetButton, userSettingsButton;
-    Button logoutButton, friendsButton, myPetsButton, findUserButton;
+    ImageButton addPetButton, userSettingsButton, searchForUsers, myFriendsButton, myPetsButtonImage, myEventsImageButton;
+    Button logoutButton, friendsButton, myPetsButton, findUserButton, myEventsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addPetButton = findViewById(R.id.addPetButton);
+
         userSettingsButton = findViewById(R.id.userSettingsButton);
         logoutButton = findViewById(R.id.logoutButton);
-        friendsButton = findViewById(R.id.buttonFindFriends);
-        myPetsButton = findViewById(R.id.myPetsButton);
-        findUserButton=findViewById(R.id.findEmailButton);
-        findUserButton.setOnClickListener(this);
-        myPetsButton.setOnClickListener(this);
-        friendsButton.setOnClickListener(this);
+
+
+        myPetsButtonImage=findViewById(R.id.myPetsImageButton);
+        myPetsButtonImage.setOnClickListener(this);
+        myEventsImageButton=findViewById(R.id.myEventsImageButton);
+        myEventsImageButton.setOnClickListener(this);
+
+        myFriendsButton=findViewById(R.id.myFriendsImageButton);
+        myFriendsButton.setOnClickListener(this);
+        searchForUsers=findViewById(R.id.searchUsersImageButton);
+        searchForUsers.setOnClickListener(this);
+
+
         addPetButton.setOnClickListener(this);
         logoutButton.setOnClickListener(this);
         userSettingsButton.setOnClickListener(this);
+        addPetButton.setBackgroundResource(0);
+        userSettingsButton.setBackgroundResource(0);
+        searchForUsers.setBackgroundResource(0);
+        myPetsButtonImage.setBackgroundResource(0);
+        myEventsImageButton.setBackgroundResource(0);
+        myFriendsButton.setBackgroundResource(0);
     }
 
 
@@ -46,16 +60,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.userSettingsButton:
                 userSetting();
                 break;
-            case R.id.buttonFindFriends:
-                MyFriends();
-                break;
-            case R.id.myPetsButton:
-                myPetsButton();
-                break;
-            case R.id.findEmailButton:
+            case R.id.searchUsersImageButton:
                 findUsers();
                 break;
+            case R.id.myFriendsImageButton:
+                MyFriends();
+                break;
+            case R.id.myPetsImageButton:
+                myPetsButton();
+                break;
+            case R.id.myEventsImageButton:
+                myEvents();
+                break;
         }
+    }
+
+    private void myEvents() {
+        startActivity(new Intent(this, MyEventsActivity.class));
     }
 
     private void MyFriends() {

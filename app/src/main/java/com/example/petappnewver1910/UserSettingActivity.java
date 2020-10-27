@@ -43,24 +43,18 @@ public class UserSettingActivity extends AppCompatActivity {
     }
 
     private void showUserInfo(String userId) {
-        // System.out.println(userId);
-/*        String name, email;
-        User newUser;
-        String numOfPets, numOfFriends;*/
-        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // textFullName.setText(user.getDisplayName());
-        //textEmail.setText(user.getEmail());
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User newUser = dataSnapshot.getValue(User.class);
-                textEmail.setText(newUser.getEmail());
-                textFullName.setText(newUser.getFullName());
+                textEmail.setText("Email: "+newUser.getEmail());
+                textFullName.setText("Name: "+newUser.getFullName());
                 newUser.setNumOfPets(newUser.getNumOfPets()+1);
-                textNumOfPets.setText(String.valueOf(newUser.getNumOfPets()));
-                textNumOfFriends.setText(String.valueOf((newUser.getNumOfFriends())));
+                textNumOfPets.setText("Pets: "+String.valueOf(newUser.getNumOfPets()));
+                textNumOfFriends.setText("Friends: "+String.valueOf((newUser.getNumOfFriends()))+1);
 
 
             }

@@ -64,8 +64,8 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
             DateFormat df = SimpleDateFormat.getDateInstance();
 
             petName.setText("Name: " + pet.name);
-            petSex.setText("Sex: " + pet.sex);
-            petDOB.setText("Date of Birth: " + df.format(new Date(pet.getbDay())));
+            petSex.setText("Sex: " + pet.getSex());
+            petDOB.setText("Date of Birth: " + pet.bDay);
             String petNameIntent=null;
             editPetButton.setOnClickListener(new View.OnClickListener() {
                 @Override

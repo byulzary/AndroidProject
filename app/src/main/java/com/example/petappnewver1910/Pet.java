@@ -7,15 +7,15 @@ public class Pet {
 
     public String id, name, sex;
     public int age;
-    private long bDay;
+    public String bDay;
 
     public Pet() {
 
     }
 
-    public Pet(String name, String sex, Date birthDate) {
+    public Pet(String name, String sex, String birthDate) {
         this.name = name;
-        this.bDay = birthDate.getTime();
+        this.bDay = birthDate;
         this.sex = sex;
     }
 
@@ -31,11 +31,11 @@ public class Pet {
         return id;
     }
 
-    public long getbDay() {
+    public String getbDay() {
         return bDay;
     }
 
-    public void setbDay(long bDay) {
+    public void setbDay(String bDay) {
         this.bDay = bDay;
     }
 

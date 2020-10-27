@@ -4,68 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#557BC6"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="LOGOUT"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/addPetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
 
-    <ImageButton
-        android:id="@+id/userSettingsButton"
+    <Button
+        android:id="@+id/logoutButton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="25dp"
+        android:text="LOGOUT"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPetButton"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
-
-    <Button
-        android:id="@+id/buttonFindFriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="FRIENDS"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/myPetsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="My Pets"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userSettingsButton" />
 
-    <Button
-        android:id="@+id/findEmailButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="FIND"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonFindFriends"
+    <ImageButton
+
+        android:id="@+id/addPetButton"
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonFindFriends" />
+        app:layout_constraintEnd_toStartOf="@+id/myPetsImageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/addpet" />
+
+    <ImageButton
+        android:id="@+id/userSettingsButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPetsImageButton"
+        app:layout_constraintStart_toStartOf="@+id/myPetsImageButton"
+        app:layout_constraintTop_toBottomOf="@+id/myFriendsImageButton"
+        app:srcCompat="@drawable/settings" />
+
+    <ImageButton
+        android:id="@+id/searchUsersImageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="@+id/myFriendsImageButton"
+        app:layout_constraintStart_toStartOf="@+id/addPetButton"
+        app:layout_constraintTop_toTopOf="@+id/myFriendsImageButton"
+        app:srcCompat="@drawable/friendsearch" />
+
+    <ImageButton
+        android:id="@+id/myFriendsImageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPetsImageButton"
+        app:layout_constraintStart_toStartOf="@+id/myPetsImageButton"
+        app:layout_constraintTop_toBottomOf="@+id/myPetsImageButton"
+        app:srcCompat="@drawable/myfriends" />
+
+    <ImageButton
+        android:id="@+id/myPetsImageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addPetButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/addPetButton"
+        app:layout_constraintTop_toTopOf="@+id/addPetButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/pets" />
+
+    <ImageButton
+        android:id="@+id/myEventsImageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="@+id/userSettingsButton"
+        app:layout_constraintEnd_toEndOf="@+id/addPetButton"
+        app:layout_constraintStart_toStartOf="@+id/addPetButton"
+        app:layout_constraintTop_toTopOf="@+id/userSettingsButton"
+        app:srcCompat="@drawable/ic_myevents" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

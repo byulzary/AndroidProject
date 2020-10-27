@@ -44,6 +44,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
     DatePickerDialog.OnDateSetListener mDateSetListener;
     DatabaseReference database;
     int numOfPets;
+    String date;
     Date bDay;
 
     @Override
@@ -84,7 +85,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month=month+1;
                 Log.d(TAG, "onDateSet:date "+year+"/"+month+"/"+dayOfMonth);
-                String date=month+"/"+dayOfMonth+"/"+year;
+                date=month+"/"+dayOfMonth+"/"+year;
                 mDisplaydate.setText(date);
                 bDay = new Date(year, month, dayOfMonth);
             }
@@ -107,7 +108,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
             sex="Female";
         }
 
-        String date=mDisplaydate.getText().toString().trim();
+        date=mDisplaydate.getText().toString().trim();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database=FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
         ValueEventListener postListener=new ValueEventListener(){
@@ -128,7 +129,7 @@ public class AddPetActivity extends AppCompatActivity implements View.OnClickLis
         numOfPets++;
         database.child("numOfPets").setValue(numOfPets);
 
-        Pet pet = new Pet(name, sex, bDay);
+        Pet pet = new Pet(name, sex, date);
 
         FirebaseDatabase.getInstance()
                 .getReference("Users")
